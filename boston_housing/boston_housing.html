@@ -13852,8 +13852,8 @@ qt3UbfoS2wYAAAAASUVORK5CYII=
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
 <ol>
-<li>In K-fold cross validation, we split the data into k number of buckets, and every time use 1 bucket for validation, and the rest for training. We average the scores for training and validation across different experiments.</li>
-<li>The benefit is for a small dataset, using K-fold cross validation reduces the potential variance in score and produces more reliable result.</li>
+<li>With K-fold cross validation, we split the training set (not the final testing test) into k buckets, and every time use one bucket for cross validation and the rest for training, and average the score. It helps more data to be used in training and reduce variance in cross validation score when the dataset is small. In sklearn, KFold by default doesn't shuffle data and splits data into consecutive folds. For training sets where order shouldn't matter, we should turn on shuffling to ensure data is randomized.</li>
+<li>The cross-validation technique is important for grid search. If we had used just the test set to find the optimal hyper-parameters, we can overfit on the test set by trying to tune the hyper-parameters to achieve best performance on test set. The knowledge of the test set can leak into model evaluation. Thus, we need a separate dataset (cross-validation set) for finding the right hyper-parameters, and only use the test set to evaluate at the very end.</li>
 </ol>
 
 </div>
